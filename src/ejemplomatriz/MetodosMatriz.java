@@ -13,8 +13,23 @@ import javax.swing.JOptionPane;
  */
 public class MetodosMatriz {
     int[][]notas = new int [3][4];
-    int[]notasMedias = new int[3];
-    int []mediaModulos = new int[4];
+    float[]notasMedias = new float[3];
+    float []mediaModulos = new float[4];
+    String [] nome = {"aa","bb","cc"};
+    String [] modulos = {"programacion","c.d","b.d","l.m"};
+    
+    
+    public int pedirNota(){
+        int resultado; 
+        do{
+       resultado=Integer.parseInt(JOptionPane.showInputDialog("Introduzca nota : "));   
+        }while(resultado<1 || resultado>10);
+        return resultado;
+        
+        
+                
+            
+    }
     public void cargarMatriz(){
         // Puede cargarse así(se hace pocas veces) ->    int [][]notaM = {{7,9,5,4},{5,5,5,5},{6,7,8,9}};
         for(int f=0;f<notas.length;f++)
@@ -30,12 +45,10 @@ public class MetodosMatriz {
             }
         System.out.println("\n");
     }}
-    public int pedirNota(){
-        return Integer.parseInt(JOptionPane.showInputDialog("Introduzca nota : "));
-    }
+    
     public void calcularMediaNotas(){
         for(int f=0;f<notas.length;f++){
-            int acumulador=0;
+            float acumulador=0;
           for(int c=0;c<notas[f].length;c++){
                 //notasMedias[f]=
               acumulador = acumulador+notas[f][c];
@@ -43,24 +56,45 @@ public class MetodosMatriz {
           notasMedias[f]= acumulador/notas[f].length;
     }
     }
-    public void amosarMediaMatriz(){
-        calcularMediaNotas();
-        for(int f=0;f<notas.length;f++){
-            
+     public void amosarMediaMatriz(){
+         calcularNotaMedia();
+         for(int f=0;f<notas.length;f++){
+             System.out.print("| ");
             for(int c=0;c<notas[f].length;c++){
-                System.out.print(notas[f][c] +" ");
+            System.out.print(notas[f][c]+" ");
+            }           
+            System.out.print("| "+notasMedias[f]+" |"+"\n");
+        }    
+    }
+   public void calcularNotaMedia(){
+         for(int f=0;f<notas.length;f++){
+             float acumulador=0;
+            for(int c=0;c<notas[f].length;c++){
+                
+                acumulador=acumulador+notas[f][c];
             }
-        System.out.println(notasMedias[f]+"\n");
-    }}
+            notasMedias[f]=acumulador/notas[f].length;
+        }
+    }
     public void calcularMediaModulos(){
     
         for(int f=0;f<notas.length;f++){
             for(int c=0;c<notas[f].length;c++){
-                mediaModulos[c]=mediaModulos[c]+notas[c][f];
+                mediaModulos[c]=mediaModulos[c]+notas[f][c];
             }
         
-    }}
+    }
+        for(int c=0;c<mediaModulos.length;c++){
+            mediaModulos[c]=mediaModulos[c]/notas.length;
+    }
         
     }
-    
+    public String amosarTodo(){
+        JOptionPane.showMessageDialog(null,"Nota media de :"+nome+"en"+modulos+"="+calcularMediaModulos());
+        
+        
+    }
+
+   
+}
 
