@@ -12,6 +12,7 @@ public class EjemploMatriz {
         MetodosMatriz obx = new MetodosMatriz();
         obx.cargarMatriz();
         obx.amosarMatriz();
+        obx.calcularNotaMedia();
         obx.amosarMediaMatriz();
         obx.calcularMediaModulos();
     }
